@@ -1,24 +1,117 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset = "utf-8"> 
-        <title>Function Use Example</title>
-    </head>
-    <script>
 
-        let playerSelection;
-        let computerSelection;
-        let playerScore = 0;
-        let computerScore = 0;
+<head>
+    <meta charset="utf-8">
+    <title>Function Use Example</title>
+</head>
+<script>
 
+    var playerSelection;
+    var computerSelection;
+    let playerScore = 0;
+    let computerScore = 0;
 
+    var choices = new Array();
+    choices[0] = "rock";
+    choices[1] = "paper";
+    choices[2] = "scissors";
 
-        function playRound(playerSelection, computerSelection) 
+    let ask = prompt("Do you want to play 'rock, paper, scissors' with the computer?\n Type 'yes' or 'no'");
+
+    if (ask.toLowerCase() == "yes") 
+    {
+        alert("Great! Lets Play!")
+        alert("Round One");
+        oneRound();
+        alert("Round two");
+        oneRound();
+        alert("Round three");
+        oneRound();
+        alert("Round four");
+        oneRound();
+        alert("Final Round\nRound five");
+        oneRound();
+        alert("Game Over\n\n"+"playerScore is " + playerScore + "\ncomputerScore is " + computerScore);
+    }
+    else {
+        alert("maybe next time");
+    }
+
+    //one round of rock, paper, scissors
+    function oneRound() 
         {
 
+            var thisplayerSelection = prompt("Please write\n 0 for 'rock'\n 1 for 'paper'\n 2 for 'scissor'", choices[thisplayerSelection]);
+            thisplayerSelection = choices[thisplayerSelection];
+            alert("you selected " + thisplayerSelection);
+            const random = Math.floor(Math.random() * choices.length);
+            alert("computer selects " + choices[random]);
+            var thiscomputerSelection = choices[random];
+            playRound(thisplayerSelection, thiscomputerSelection);
+        
         }
 
-    </script>
+
+
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+            alert("tied!");
+        }
+        else if (playerSelection != computerSelection) {
+            if (playerSelection.includes(choices[1]) && computerSelection.includes(choices[0]))
+            //paper beats rock
+            {
+
+                alert("paper beats rock");
+                playerScore += 1;
+            }
+            if (playerSelection.includes(choices[0]) && computerSelection.includes(choices[2]))
+            //rock beats scissors
+            {
+
+                alert("rock beats scissors");
+                playerScore += 1;
+            }
+            if (playerSelection.includes(choices[2]) && computerSelection.includes(choices[1]))
+            //scissors beats paper
+            {
+
+                alert("rock beats scissors");
+                playerScore += 1;
+            }
+            if (playerSelection.includes(choices[0]) && computerSelection.includes(choices[1]))
+            //rock loses to paper
+            {
+
+                alert("rock loses to paper");
+                computerScore += 1;
+            }
+            if (playerSelection.includes(choices[2]) && computerSelection.includes(choices[0]))
+            //scissors loses to rock
+            {
+
+                alert("scissors loses to rock");
+                computerScore += 1;
+            }
+            if (playerSelection.includes(choices[1]) && computerSelection.includes(choices[2]))
+            //paper loses to scissors
+            {
+
+                alert("paper loses to scissors");
+                computerScore += 1;
+            }
+
+            //else { computerScore +=1; alert("nope"); }
+        }
+        else {
+            alert("no valid option");
+        }
+        alert("playerScore is " + playerScore + "\ncomputerScore is " + computerScore);
+    }
+
+
+</script>
+
 </html>
-
-
